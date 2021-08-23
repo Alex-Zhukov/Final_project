@@ -24,9 +24,10 @@ ML: sklearn, dask, pandas, numpy, GradientBoostingClassifier
 ### Описание файлов в папке notebooks:
 
 - Merge.ipynb Блокнот для объединения данных train/test с features. 
+- EDA_Baseline.ipynb Блокнот с EDA и бейзлайн моделью.
 - answers_test.csv Вероятности подключения услуги, предсказанные моделью
 
 # TODO
-Добавить блокноты с EDA, FeatureEng, Выбором моделей, тюнингом моделей.
+Добавить блокноты FeatureEng, Выбором моделей, тюнингом моделей.
 Добавить презентацию.
 Добавить Принцип построения
