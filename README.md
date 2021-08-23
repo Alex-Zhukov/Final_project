@@ -8,7 +8,7 @@ ML: sklearn, dask, pandas, numpy, GradientBoostingClassifier
 
 Модель: GradientBoostingClassifier
 
-Итоговый f1_score:
+Итоговый f1_score: 0.66
 
 ### Для предсказания вероятности подключения услуги необходимо:
 
@@ -19,11 +19,12 @@ ML: sklearn, dask, pandas, numpy, GradientBoostingClassifier
 
 ### Библиотеки, необходимые для работы находятся в файле requirements.txt
 
-### Обученная модель - model.pkl
+### Обученная модель - model.pkl находится в корневой папке.
 
-### Описание файлов:
+### Описание файлов в папке notebooks:
 
 - Merge.ipynb Блокнот для объединения данных train/test с features. 
+- answers_test.csv Вероятности подключения услуги, предсказанные моделью
 
 # TODO
 Добавить блокноты с EDA, FeatureEng, Выбором моделей, тюнингом моделей.
