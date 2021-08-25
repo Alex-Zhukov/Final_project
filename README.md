@@ -2,13 +2,21 @@
 
 Стек:
 
-ML: sklearn, dask, pandas, numpy, GradientBoostingClassifier
+ML: sklearn, dask, pandas, numpy, CatBoostClassifier
 
 Задача: Предсказать вероятность подключения услуги.
 
-Модель: GradientBoostingClassifier
+Данные:
+- target - целевая переменная, где 1 означает подключение услуги, 0 - абонент не подключил услугу соответственно. 
+- buy_time - время покупки, представлено в формате timestamp, для работы с этим столбцом понадобится функция datetime.fromtimestamp из модуля datetime.
+- id - идентификатор абонента
+- vas_id - подключаемая услуга
+- 0 - 252 - нормализованный анонимизированный набор признаков
 
-Итоговый f1_score: 0.66
+
+Модель: CatBoostClassifier
+
+Итоговый f1_score: 0.74
 
 ### Для предсказания вероятности подключения услуги необходимо:
 
@@ -16,6 +24,9 @@ ML: sklearn, dask, pandas, numpy, GradientBoostingClassifier
 - Загрузить обученную модель (model.pkl) в корневую папку.
 - Запустить скрипт Prediction.py
 - После выполнения скрипта будет создан файл answers_test.csv
+
+### Train/test split для обучения модели:
+Последние 3 временные даты на тест, остальные на трейн.
 
 ### Библиотеки, необходимые для работы находятся в файле requirements.txt
 
@@ -25,9 +36,7 @@ ML: sklearn, dask, pandas, numpy, GradientBoostingClassifier
 
 - Merge.ipynb Блокнот для объединения данных train/test с features. 
 - EDA_Baseline.ipynb Блокнот с EDA и бейзлайн моделью.
+- Final_model.ipynb Блокнот с финальной моделью + подбором гиперпараметров.
 - answers_test.csv Вероятности подключения услуги, предсказанные моделью
 
-# TODO
-Добавить блокноты FeatureEng, Выбором моделей, тюнингом моделей.
-Добавить презентацию.
-Добавить Принцип построения
+

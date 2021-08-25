@@ -19,6 +19,23 @@ class FeatureSelector(BaseEstimator, TransformerMixin):
         return X[self.columns]
 
 
+class ColumnSelector(BaseEstimator, TransformerMixin):
+    def __init__(self, columns):
+        self.columns = columns
+
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, X):
+        assert isinstance(X, pd.DataFrame)
+
+        try:
+            return X[self.columns]
+        except KeyError:
+            cols_error = list(set(self.columns) - set(X.columns))
+            raise KeyError("DataFrame не содердит следующие колонки: %s" % cols_error)
+
+
 def merge_data(df, features):
     data_merged = pd.merge(df, features, on='id')
 
@@ -31,7 +48,8 @@ def merge_data(df, features):
     to_delete = list(set(before_clean) - set(after_clean))
 
     data_merged.drop(to_delete, axis=0, inplace=True)
-    data_merged.drop(columns=['Unnamed: 0_y'], inplace=True)
+    data_merged.drop(columns=['Unnamed: 0_x','Unnamed: 0_y', 'buy_time_y'], inplace=True)
+    data_merged.rename(columns={"buy_time_x": "buy_time"}, inplace=True)
 
     del duplicated_data
     return data_merged
